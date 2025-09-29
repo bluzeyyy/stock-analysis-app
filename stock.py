@@ -32,7 +32,11 @@ selected_tickers = st.sidebar.multiselect("Select stock tickers:", ticker_option
 tickers_input = st.sidebar.text_input("Enter custom tickers (comma-separated):", "")
 # Validate and deduplicate tickers
 valid_ticker = re.compile(r'^[A-Z0-9.-]+$')
-tickers = list(set(ticker.strip().upper() for ticker in tickers_input.split(",") if ticker.strip() and valid_ticker.match(ticker.strip())) + selected_tickers)
+if not tickers_input.strip():
+    tickers = list(set(selected_tickers))  # Use only selected tickers if input is empty
+else:
+    tickers = list(set([ticker.strip().upper() for ticker in tickers_input.split(",") if ticker.strip() and valid_ticker.match(ticker.strip())] + selected_tickers))
+
 period = st.sidebar.selectbox("Select data period:", ["1mo", "3mo", "6mo", "1y"], index=3)
 
 recommendations = []
