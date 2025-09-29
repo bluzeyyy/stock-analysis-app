@@ -16,9 +16,9 @@
 4. Open http://localhost:8501
 
 ## Deployment
-Deployed on Streamlit Cloud: [stock-pro.streamlit.app](https://stock-pro.streamlit.app)
+Deployed on Streamlit Cloud: [stock-vision-pro.streamlit.app](https://stock-vision-pro.streamlit.app)
 
 ## Tech Stack
-- Python, Streamlit, yfinance, pandas, plotly
+- Python, Streamlit, yfinance, pandas, plotly, matplotlib
 
 Built by [bluzeyyy](https://github.com/bluzeyyy).
