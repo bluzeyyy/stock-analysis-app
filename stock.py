@@ -1,4 +1,4 @@
-```python
+python
 import yfinance as yf
 import pandas as pd
 import plotly.graph_objects as go
