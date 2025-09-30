@@ -19,9 +19,17 @@ def fetch_stock_data(tickers, period="6mo"):
 
 @st.cache_data
 def get_sp500_tickers():
-    """Fetch latest S&P500 tickers from Wikipedia."""
-    sp500 = pd.read_html("https://en.wikipedia.org/wiki/List_of_S%26P_500_companies")[0]
-    return sp500['Symbol'].tolist()
+    """Fetch latest S&P500 tickers from Wikipedia, with fallback."""
+    url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+    headers = {"User-Agent": "Mozilla/5.0"}  # Fake browser header
+    try:
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()
+        sp500 = pd.read_html(response.text)[0]
+        return sp500['Symbol'].tolist()
+    except Exception as e:
+        st.warning(f"⚠️ Could not fetch S&P 500 list (using fallback). Error: {e}")
+        return ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA"]
 
 # ---------------------------------------------------
 # Helper: Calculate Indicators

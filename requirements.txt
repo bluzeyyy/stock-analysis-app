@@ -1,5 +1,7 @@
 yfinance
 pandas
 plotly
-streamlit
-matplotlib
+requests
+beautifulsoup4
+lxml
+html5lib
