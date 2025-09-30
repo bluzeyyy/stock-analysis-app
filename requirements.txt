@@ -1,3 +1,4 @@
+streamlit
 yfinance
 pandas
 plotly
@@ -5,3 +6,4 @@ requests
 beautifulsoup4
 lxml
 html5lib
+matplotlib
